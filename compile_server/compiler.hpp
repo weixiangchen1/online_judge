@@ -39,7 +39,8 @@ namespace ns_compiler
             {
                 // 当g++编译出错时，错误信息会打印到标准错误中
                 // 需要将错误信息重定向到 filename.stderr文件中
-                int _stderr = open(PathUtil::Stderr(file_name).c_str(), O_CREAT | O_WRONLY, 0644);
+                umask(0);
+                int _stderr = open(PathUtil::Compile_stderr(file_name).c_str(), O_CREAT | O_WRONLY, 0644);
                 if (_stderr < 0)
                 {
                     LOG(ERROR) << "open stderr file failed" << "\n";
@@ -50,8 +51,8 @@ namespace ns_compiler
                 // 子进程，进行程序替换，执行传入的文件名对应文件里的代码
                 // g++ -o dest src -std=c++11
                 execlp("g++", "g++", "-o", PathUtil::Exe(file_name).c_str(), \
-                PathUtil::Src(file_name).c_str(), "-std=c++11", nullptr);
-                LOG(ERROR) << "execlp g++ falied" << "\n";
+                PathUtil::Src(file_name).c_str(), "-D", "COMPILE_ONLINE", "-std=c++11", nullptr);
+                LOG(ERROR) << "process replacement falied" << "\n";
                 exit(2);
             }
             else 
@@ -59,7 +60,7 @@ namespace ns_compiler
                 // 父进程 进行进程等待
                 waitpid(pid, nullptr, 0);
                 // 进程等待成功，判断是否生成可执行文件
-                if (FileUtil::IsFileExits(PathUtil::Exe(file_name)))
+                if (FileUtil::IsFileExists(PathUtil::Exe(file_name)))
                 {
                     LOG(INFO) << "compile file success" << "\n";
                     return true;
