@@ -84,7 +84,7 @@ namespace ns_model
         }
 
         // 获取所有题目列表
-        bool GetAllQuestions(std::vector<Question>* out)
+        bool GetAllQuestions(std::vector<struct Question>* out)
         {
             if (questions.size() == 0) 
             {
