@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>online_judge</title>
+    <title>在线OJ-题目列表</title>
     <style>
         /* 起手式, 100%保证我们的样式设置可以不受默认影响 */
         * {
@@ -45,36 +45,57 @@
             /* 设置a标签中的文字居中 */
             text-align: center;
         }
+
         /* 设置鼠标事件 */
         .container .navbar a:hover {
             background-color: green;
         }
+
         .container .navbar .login {
             float: right;
         }
 
-        .container .content {
-            /* 设置标签的宽度 */
+        .container .question_list {
+            padding-top: 50px;
             width: 800px;
-            /* 用来调试 */
-            /* background-color: #ccc; */
-            /* 整体居中 */
+            height: 100%;
             margin: 0px auto;
-            /* 设置文字居中 */
+            /* background-color: #ccc; */
             text-align: center;
-            /* 设置上外边距 */
-            margin-top: 200px;
         }
 
-        .container .content .font_ {
-            /* 设置标签为块级元素，独占一行，可以设置高度宽度等属性 */
-            display: block;
-            /* 设置每个文字的上外边距 */
-            margin-top: 20px;
-            /* 去掉a标签的下划线 */
+        .container .question_list table {
+            width: 100%;
+            font-size: large;
+            font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+            margin-top: 50px;
+            background-color: rgb(243, 248, 246);
+        }
+
+        .container .question_list h1 {
+            color: green;
+        }
+        .container .question_list table .item {
+            width: 100px;
+            height: 40px;
+            font-size: large;
+            font-family:'Times New Roman', Times, serif;
+        }
+        .container .question_list table .item a {
             text-decoration: none;
-            /* 设置字体大小
-            font-size: larger; */
+            color: black;
+        }
+        .container .question_list table .item a:hover {
+            color: blue;
+            text-decoration:underline;
+        }
+        .container .footer {
+            width: 100%;
+            height: 50px;
+            text-align: center;
+            line-height: 50px;
+            color: #ccc;
+            margin-top: 15px;
         }
     </style>
 </head>
@@ -90,11 +111,29 @@
             <a href="#">求职</a>
             <a class="login" href="#">登录</a>
         </div>
-        <!-- 网页的内容 -->
-        <div class="content">
-            <h1>This is a online judge platfrom</h1>
-            <a href="/all_questions">Click here to start coding</a>
+        <div class="question_list">
+            <h1>题目列表</h1>
+            <table>
+                <tr>
+                    <th class="item">编号</th>
+                    <th class="item">标题</th>
+                    <th class="item">难度</th>
+                </tr>
+                {{#question_list}}
+                <tr>
+                    <td class="item">{{number}}</td>
+                    <td class="item"><a href="/question/{{number}}">{{title}}</a></td>
+                    <td class="item">{{level}}</td>
+                </tr>
+                {{/question_list}}
+            </table>
+        </div>
+        <div class="footer">
+            <!-- <hr> -->
+            <h4>@cwx</h4>
         </div>
     </div>
+
 </body>
 
+</html>

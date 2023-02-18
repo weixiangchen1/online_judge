@@ -23,7 +23,7 @@ int main(int argc, char* argv[])
     //     resp.set_content("hello httplib", "text/plain;charset=utf-8");
     // });
 
-    svr.Post("/complie_and_run", [](const Request& req, Response& resp){
+    svr.Post("/compile_and_run", [](const Request& req, Response& resp){
         std::string in_json = req.body;
         std::string out_json;
         if (!in_json.empty())

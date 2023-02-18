@@ -55,7 +55,7 @@ namespace ns_model
             {
                 std::vector<std::string> out;
                 StringUtil::SplitString(line, &out, " ");  
-                // 1 回文数 简单  1 50000    
+                // 1 回文数 简单 1 50000    
                 if (out.size() != 5) 
                 {
                     LOG(WARING) << "Load part of questions failed" << "\n";

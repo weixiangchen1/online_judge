@@ -34,8 +34,8 @@ namespace ns_compile_run
             std::string src_file = PathUtil::Src(file_name);
             if (FileUtil::IsFileExists(src_file)) unlink(src_file.c_str());
 
-            std::string complie_file = PathUtil::Compile_stderr(file_name);
-            if (FileUtil::IsFileExists(complie_file)) unlink(complie_file.c_str());
+            std::string compile_file = PathUtil::Compile_stderr(file_name);
+            if (FileUtil::IsFileExists(compile_file)) unlink(compile_file.c_str());
         }
         // 返回错误码对应的描述信息
         // code == 0  程序正常运行结束
@@ -47,7 +47,7 @@ namespace ns_compile_run
             switch (code)
             {
             case 0:
-                desc = "Code complie and run success";
+                desc = "Code compile and run success";
                 break;
             case -1:
                 desc = "User send code is empty";
