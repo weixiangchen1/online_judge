@@ -7,7 +7,8 @@
 #include <fstream>
 #include <jsoncpp/json/json.h>
 
-#include "./oj_model.hpp"
+// #include "./oj_model.hpp"
+#include "./oj_model_sql.hpp"
 #include "./oj_view.hpp"
 #include "../comm/log.hpp"
 #include "../comm/util.hpp"
@@ -213,6 +214,7 @@ namespace ns_control
         void RecoveryMachines()
         {
             _load_balance.OnlineMachine();
+            LOG(INFO) << "All machines is online now" << "\n";
         }
 
         // 获取所有题目信息

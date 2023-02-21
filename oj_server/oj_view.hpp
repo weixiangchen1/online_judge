@@ -5,7 +5,8 @@
 #include <vector>
 #include <ctemplate/template.h>
 
-#include "./oj_model.hpp"
+// #include "./oj_model.hpp"
+#include "./oj_model_sql.hpp"
 
 namespace ns_view
 {
